@@ -1,30 +1,9 @@
-import { useContext, useEffect } from "react";
-import { UserContext } from "../App";
+import {  useContext } from "react";
+import { UserContext } from "../utils/Context";
 
 const Products = () => {
 
-  const {data,setData} = useContext(UserContext);
-  const getData = async () => {
-    try {
-      const requestOptions = {
-        method: "GET",
-        redirect: "follow",
-      };
-
-      const response = await fetch(
-        "https://fakestoreapi.com/products",
-        requestOptions
-      );
-      const result = await response.json();
-      setData(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-
+  const {data} = useContext(UserContext)
 
 
   return (
